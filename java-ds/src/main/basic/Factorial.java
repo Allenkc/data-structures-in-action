@@ -13,23 +13,27 @@ public class Factorial {
      * @param n
      * @return
      */
-    public static int doFactorialRecursively(int n) {
+    public static long doFactorialRecursively(long n) {
 
-        if (n == 0) {
+        if (n < 0) throw new RuntimeException("Underflow error in factorial");
+        else if (n > 20) throw new RuntimeException("Overflow error in factorial");
+        else if (n == 0) {
             return 1;
         }
 
         return doFactorialRecursively(n - 1) * n;
     }
 
-    public static int doFactorialIteratively(int n) {
+    public static long doFactorialIteratively(long n) {
 
-        if (n == 0) {
+        if (n < 0) throw new RuntimeException("Underflow error in factorial");
+        else if (n > 20) throw new RuntimeException("Overflow error in factorial");
+        else if (n == 0) {
             return 1;
         }
 
         int i;
-        int product = 1;
+        long product = 1L;
 
         for (i = 1; i <= n; i++) {
 

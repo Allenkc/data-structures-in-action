@@ -9,18 +9,19 @@ public class FactorialTest {
     @Test
     public void testFactorial() {
 
-        int result = Factorial.doFactorialRecursively(5);
-        Assertions.assertEquals(120, result);
+        Assertions.assertEquals(120, Factorial.doFactorialRecursively(5));
 
-        int result2 = Factorial.doFactorialRecursively(0);
-        Assertions.assertEquals(1, result2);
+        Assertions.assertEquals(1, Factorial.doFactorialRecursively(0));
 
-        int result3 = Factorial.doFactorialRecursively(10);
-        Assertions.assertEquals(3628800, result3);
+        Assertions.assertEquals(3628800, Factorial.doFactorialRecursively(10));
+
+        Assertions.assertEquals(2432902008176640000L, Factorial.doFactorialRecursively(20));
+
 
         Assertions.assertEquals(120, Factorial.doFactorialIteratively(5));
         Assertions.assertEquals(1, Factorial.doFactorialIteratively(0));
         Assertions.assertEquals(3628800, Factorial.doFactorialIteratively(10));
+        Assertions.assertEquals(2432902008176640000L, Factorial.doFactorialIteratively(20));
 
     }
 }
