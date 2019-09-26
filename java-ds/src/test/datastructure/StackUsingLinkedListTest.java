@@ -40,6 +40,7 @@ public class StackUsingLinkedListTest {
 
         stackUsingArray.pop();
         stackUsingArray.pop();
+        stackUsingArray.push(8787);
         stackUsingArray.display();
         stackUsingArray.peek();
 
