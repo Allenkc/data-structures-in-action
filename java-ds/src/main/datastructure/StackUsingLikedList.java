@@ -1,5 +1,7 @@
 package main.datastructure;
 
+import static java.lang.System.exit;
+
 public class StackUsingLikedList {
 
     // 類似C++之struct，建立linked list node
@@ -13,7 +15,7 @@ public class StackUsingLikedList {
     Node top;
 
     // Constructor
-    StackUsingLikedList() {
+    public StackUsingLikedList() {
         this.top = null;
     }
 
@@ -23,7 +25,7 @@ public class StackUsingLikedList {
         Node temp = new Node();
 
         // check if stack(heap) is full
-        // 不確定用意 TODO google一下
+        // 因為這裡不像書上範例是以傳入之參數N為SIZE，是以實際memory來當作stack之size，所以需要檢查memory使用狀況
         if (temp == null) {
             System.out.print("\nHeap Overflow");
             return;
@@ -61,6 +63,22 @@ public class StackUsingLikedList {
         }
 
         top = top.link;
+    }
+
+    public void display() {
+
+        if( top == null) {
+            System.out.printf("\nStack Underflow");
+            exit(1);
+        } else {
+            Node temp = top;
+            while ( temp != null) {
+                System.out.printf("%d->",temp.data);
+
+                temp = temp.link;
+            }
+        }
+
     }
 
 
