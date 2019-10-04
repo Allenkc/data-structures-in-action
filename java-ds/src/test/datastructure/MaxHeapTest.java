@@ -12,6 +12,8 @@ public class MaxHeapTest {
         MaxHeap maxHeap = new MaxHeap(new int[]{5,3,17,10,84,19,6,22,9});
         int[] tmp = maxHeap.getHeap();
         maxHeap.createHeap();
+
+        System.out.println("The max val now deleting is :" + maxHeap.delete());
         maxHeap.print();
 
 //        minHeap.insert(5);

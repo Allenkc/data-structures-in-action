@@ -7,22 +7,28 @@ public class MaxHeap {
 
     private int[] heap;
     private int size;
-    private int maxSize;
 
     private static final int FRONT = 1;
 
-    public int[] getHeap(){
+    public int[] getHeap() {
         return heap;
+    }
+
+    // Returns true of given node is leaf
+    private boolean isLeaf(int pos) {
+        if (pos >= (size / 2) && pos <= size) {
+            return true;
+        }
+        return false;
     }
 
     public MaxHeap(int[] initArray) {
 
-        this.maxSize = initArray.length;
-        this.size = this.maxSize;
-        heap = new int[this.maxSize + 1];
+        this.size = initArray.length;
+        heap = new int[this.size + 1];
         heap[0] = Integer.MAX_VALUE;
         int count = 0;
-        for(int i =1;i<=maxSize;i++){
+        for (int i = 1; i <= size; i++) {
             heap[i] = initArray[count++];
         }
     }
@@ -39,39 +45,52 @@ public class MaxHeap {
         return pos * 2 + 1;
     }
 
-    private void adjust(int pos){
+    private void adjust(int pos) {
+
+        if (isLeaf(pos))
+            return;
+
         int k = heap[pos];
         int j = leftChild(pos);
-        while ( j <= size) {
-            if( j < size) {
-                if(heap[j] < heap[j+1]){
+        while (j <= size) {
+            if (j < size) {
+                if (heap[j] < heap[j + 1]) {
                     j++;
                 }
-                if (k>=heap[j]){
+                if (k >= heap[j]) {
                     break;
-                }else {
-                    heap[j/2] = heap[j]; //挑戰成功
-                    j = 2*j;
+                } else {
+                    heap[j / 2] = heap[j]; //挑戰成功
+                    j = 2 * j;
                 }
             }
         }
-        heap[j/2] = k;
+        heap[j / 2] = k;
     }
 
-    public void createHeap(){
-        for (int j = (size/2);j>=1 ; j--){
+    public void createHeap() {
+        for (int j = (size / 2); j >= 1; j--) {
             this.adjust(j);
         }
     }
 
-    public void print()
-    {
+
+    public void print() {
         for (int i = 1; i <= size / 2; i++) {
             System.out.print(" PARENT : " + heap[i]
                     + " LEFT CHILD : " + heap[2 * i]
                     + " RIGHT CHILD :" + heap[2 * i + 1]);
             System.out.println();
         }
+    }
+    
+
+    // TODO FIX this
+    public int delete() {
+        int popped = heap[FRONT];
+        heap[FRONT] = heap[size--];
+        adjust(FRONT);
+        return popped;
     }
 
 }
