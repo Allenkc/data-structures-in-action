@@ -69,8 +69,8 @@ public class MaxHeap {
     }
 
     public void createHeap() {
-        for (int j = (size / 2); j >= 1; j--) {
-            this.adjust(j);
+        for (int pos = (size / 2); pos >= 1; pos--) {
+            this.adjust(pos);
         }
     }
 
