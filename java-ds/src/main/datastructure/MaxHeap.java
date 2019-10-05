@@ -50,22 +50,24 @@ public class MaxHeap {
     private void adjust(int pos) {
 
         int k = heap[pos];
-        int j = leftChild(pos);
-        while (j <= size) {
-            if (j < size) {
-                if (heap[j] < heap[j + 1]) {
-                    j++;
+        int leftChildPos = leftChild(pos);
+        while (leftChildPos <= size) {
+            // 檢查有無右子
+            if (leftChildPos < size) {
+                // 表示有右子，看左子大還是右子大
+                if (heap[leftChildPos] < heap[leftChildPos + 1]) {
+                    leftChildPos++;
                 }
             }
 
-            if (k >= heap[j]) {
+            if (k >= heap[leftChildPos]) {
                 break;
             } else {
-                heap[parent(j)] = heap[j]; //挑戰成功
-                j = 2 * j;
+                heap[parent(leftChildPos)] = heap[leftChildPos]; //挑戰成功
+                leftChildPos = 2 * leftChildPos;
             }
         }
-        heap[parent(j)] = k;
+        heap[parent(leftChildPos)] = k;
     }
 
     public void createHeap() {
