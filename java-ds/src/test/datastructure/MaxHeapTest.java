@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 public class MaxHeapTest {
 
     @Test
-    public void testMaxHeap(){
+    public void testMaxHeap() {
         System.out.println("The Max Heap is ");
-        MaxHeap maxHeap = new MaxHeap(new int[]{5,3,17,10,84,19,6,22,9});
+        MaxHeap maxHeap = new MaxHeap(new int[]{5, 3, 17, 10, 84, 19, 6, 22, 9});
         int[] tmp = maxHeap.getHeap();
         maxHeap.createHeap();
 
@@ -29,5 +29,17 @@ public class MaxHeapTest {
 //
 //        minHeap.print();
 //        System.out.println("The Min val is " + minHeap.remove());
+    }
+
+    @Test
+    public void testMaxHeap2() {
+        System.out.println("The Max Heap is ");
+        MaxHeap maxHeap = new MaxHeap(new int[]{1, 2, 3, 5, 7, 10, 9, 15});
+        int[] tmp = maxHeap.getHeap();
+        maxHeap.createHeap();
+
+        System.out.println("The max val now deleting is :" + maxHeap.delete());
+        maxHeap.print();
+
     }
 }

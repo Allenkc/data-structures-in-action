@@ -49,9 +49,6 @@ public class MaxHeap {
 
     private void adjust(int pos) {
 
-        //        if (isLeaf(pos))
-        //            return;
-
         int k = heap[pos];
         int j = leftChild(pos);
         while (j <= size) {
@@ -80,14 +77,13 @@ public class MaxHeap {
     public void print() {
         for (int i = 1; i <= size / 2; i++) {
             System.out.print(" PARENT : " + heap[i] + " LEFT CHILD : " + heap[2 * i]);
-            if(2*i+1<size){
-                System.out.print(" RIGHT CHILD :" +  heap[2 * i + 1]);
+            if (2 * i + 1 <= size) {
+                System.out.print(" RIGHT CHILD :" + heap[2 * i + 1]);
             }
             System.out.println();
         }
     }
 
-    // TODO FIX this
     public int delete() {
         int popped = heap[FRONT];
         heap[FRONT] = heap[size--];
